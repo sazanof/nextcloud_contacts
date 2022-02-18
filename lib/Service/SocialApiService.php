@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @copyright Copyright (c) 2020 Matthias Heinisch <nextcloud@matthiasheinisch.de>
  *
