@@ -411,7 +411,7 @@ class SocialApiService {
 
 				try {
 					$r = $this->updateContact($addressBook->getURI(), $contact['UID'], $network);
-					$response = $this->registerUpdateResult($response, $contact['FN'], int($r->getStatus()));
+					$response = $this->registerUpdateResult($response, $contact['FN'], (int) $r->getStatus());
 				} catch (\Exception $e) {
 					$response = $this->registerUpdateResult($response, $contact['FN'], -1);
 				}
