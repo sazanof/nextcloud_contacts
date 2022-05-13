@@ -22,7 +22,14 @@
 
 <template>
 	<AppContentList>
-		<div class="contacts-list__header" />
+		<div class="contacts-list__header">
+			<div class="search-contacts-field">
+				<input type="text" :placeholder="t('mail', 'Search contacts...')" v-model="query">
+				<button class="clear-search-field" v-if="query.length > 0" @click="query = ''">
+					<Close :size="24" />
+				</button>
+			</div>
+		</div>
 		<VirtualList ref="scroller"
 			class="contacts-list"
 			data-key="key"
@@ -36,6 +43,7 @@
 import AppContentList from '@nextcloud/vue/dist/Components/AppContentList'
 import ContactsListItem from './ContactsList/ContactsListItem'
 import VirtualList from 'vue-virtual-scroll-list'
+import Close from 'vue-material-design-icons/Close'
 
 export default {
 	name: 'ContactsList',
@@ -43,6 +51,7 @@ export default {
 	components: {
 		AppContentList,
 		VirtualList,
+		Close
 	},
 
 	props: {
@@ -63,7 +72,12 @@ export default {
 	data() {
 		return {
 			ContactsListItem,
+			query: '',
 		}
+	},
+
+	mounted() {
+		this.query = this.searchQuery
 	},
 
 	computed: {
@@ -143,8 +157,8 @@ export default {
 		 * @return {boolean}
 		 */
 		matchSearch(contact) {
-			if (this.searchQuery.trim() !== '') {
-				return contact.searchData.toString().toLowerCase().search(this.searchQuery.trim().toLowerCase()) !== -1
+			if (this.query.trim() !== '') {
+				return contact.searchData.toString().toLowerCase().search(this.query.trim().toLowerCase()) !== -1
 			}
 			return true
 		},
@@ -162,5 +176,24 @@ export default {
 // Add empty header to contacts-list that solves overlapping of contacts with app-navigation-toogle
 .contacts-list__header {
 	min-height: 48px;
+}
+
+// Search field
+.search-contacts-field {
+	position: relative;
+	padding: 5px 10px 5px 40px;
+	> input {
+		width: 100%;
+		box-sizing: border-box;
+		padding-right: 44px;
+	}
+	.clear-search-field {
+		background-color: transparent;
+		padding: 0;
+		border: none;
+		position: absolute;
+		right: 11px;
+		top: 5px;
+	}
 }
 </style>
