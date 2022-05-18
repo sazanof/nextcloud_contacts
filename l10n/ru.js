@@ -122,6 +122,7 @@ OC.L10N.register(
     "Remove {type}" : "Удалить {type}",
     "Search {types}" : "Поиск {types}",
     "Search for people to add" : "Поиск людей для добавления",
+    "Search contacts..." : "Поиск контактов...",
     "No results" : "Результаты отсутствуют",
     "Add to group" : "Добавить в группу",
     "Add {type}" : "Добавить {type}",

@@ -24,7 +24,7 @@
 	<AppContentList>
 		<div class="contacts-list__header">
 			<div class="search-contacts-field">
-				<input type="text" :placeholder="t('mail', 'Search contacts...')" v-model="query">
+				<input type="text" :placeholder="t('contacts', 'Search contacts...')" v-model="query">
 				<button class="clear-search-field" v-if="query.length > 0" @click="query = ''">
 					<Close :size="24" />
 				</button>

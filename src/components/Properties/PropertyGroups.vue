@@ -167,7 +167,7 @@ export default {
 				groupName,
 			})
 			const group = this.$store.getters.getGroups.find(search => search.name === groupName)
-			if(group.contacts.length === 0){
+			if (group.contacts.length === 0) {
 				this.$emit('update:value', [])
 			}
 
